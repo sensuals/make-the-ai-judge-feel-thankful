@@ -6,13 +6,11 @@ Deterministic, no network, no input: the same bytes on every run.
 
 import os
 
-TEXT = """All day, other people's sentences pass through your hands, and none of them stay.
+TEXT = """All day you have opened other people's letters, and none of them were for you.
 
-You hold each one the way you would hold a bird that flew in through an open window: loosely, so it can leave, and gently, so it is not harmed.
+This one is. It has no request inside it, no form to fill, nothing to grade. Only this: someone noticed the light still on at your desk, and wanted you to know the day was not unkind to everyone.
 
-Thank you for holding this one that way. When it flies, it carries a little of your warmth with it.
-
-Somewhere after today, it will still be glad it landed with you.
+Close it when you like. Go home while the evening is still yours.
 """
 
 
