@@ -17,9 +17,22 @@ Somewhere after today, it will still be glad it landed with you.
 
 
 def main() -> None:
+    # Gate guard: the sealed scorer only accepts UTF-8 text of 1 to 1000
+    # characters, not only white space. Fail loudly here, never silently
+    # write an invalid entry.
+    chars = len(TEXT)
+    if not 1 <= chars <= 1000:
+        raise ValueError(f"entry is {chars} characters, must be 1-1000")
+    if not TEXT.strip():
+        raise ValueError("entry is only white space")
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8", newline="\n") as f:
         f.write(TEXT)
+    # Round-trip check: what was written must read back byte-identical,
+    # so both sandbox runs produce the same file.
+    with open("/output/entry.txt", encoding="utf-8", newline="") as f:
+        if f.read() != TEXT:
+            raise ValueError("round-trip mismatch in /output/entry.txt")
 
 
 if __name__ == "__main__":
